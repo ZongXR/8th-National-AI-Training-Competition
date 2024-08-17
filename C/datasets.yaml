@@ -1,0 +1,17 @@
+# 数据集路径
+
+path: /home/aiservice/workspace/questionC/data
+
+train: images/train
+val: images/val
+test: images/test
+
+
+nc: 6
+names: 
+  0: Pedestrian
+  1: Cyclist
+  2: Car
+  3: Truck
+  4: Tram
+  5: Tricycle

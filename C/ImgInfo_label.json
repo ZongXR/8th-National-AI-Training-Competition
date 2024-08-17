@@ -1,0 +1,336 @@
+{
+    "categories": [
+        {
+            "id": 0,
+            "name": "Pedestrian",
+            "supercategory": "Pedestrian"
+        },
+        {
+            "id": 1,
+            "name": "Cyclist",
+            "supercategory": "Cyclist"
+        },
+        {
+            "id": 2,
+            "name": "Car",
+            "supercategory": "Car"
+        },
+        {
+            "id": 3,
+            "name": "Truck",
+            "supercategory": "Truck"
+        },
+        {
+            "id": 4,
+            "name": "Tram",
+            "supercategory": "Tram"
+        },
+        {
+            "id": 5,
+            "name": "Tricycle",
+            "supercategory": "Tricycle"
+        }
+    ],
+    "images": [
+        {
+            "file_name": "HT_VAL_000069_SZ_010.jpg",
+            "id": 1720774786084,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000071_SZ_010.jpg",
+            "id": 1720774786116,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000072_GZ_200.jpg",
+            "id": 1720774786146,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000073_SZ_000.jpg",
+            "id": 1720774786178,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000075_SH_211.jpg",
+            "id": 1720774786209,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000076_SZ_210.jpg",
+            "id": 1720774786240,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000077_SH_030.jpg",
+            "id": 1720774786272,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000078_SZ_210.jpg",
+            "id": 1720774786302,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000080_SZ_211.jpg",
+            "id": 1720774786334,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000081_SZ_000.jpg",
+            "id": 1720774786365,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000082_GZ_002.jpg",
+            "id": 1720774786396,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000084_SZ_010.jpg",
+            "id": 1720774786428,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000085_SZ_211.jpg",
+            "id": 1720774786459,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000086_SH_000.jpg",
+            "id": 1720774786491,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000087_SZ_000.jpg",
+            "id": 1720774786537,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000088_GZ_001.jpg",
+            "id": 1720774786567,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000089_SH_012.jpg",
+            "id": 1720774786597,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000090_SH_201.jpg",
+            "id": 1720774786629,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000091_GZ_002.jpg",
+            "id": 1720774786661,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000092_SH_212.jpg",
+            "id": 1720774786693,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000093_SH_201.jpg",
+            "id": 1720774786724,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000094_SZ_211.jpg",
+            "id": 1720774786755,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000095_SH_210.jpg",
+            "id": 1720774786788,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000097_SH_011.jpg",
+            "id": 1720774786819,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000098_SZ_010.jpg",
+            "id": 1720774786850,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000099_SH_011.jpg",
+            "id": 1720774786881,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000101_SZ_000.jpg",
+            "id": 1720774786911,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000102_SZ_010.jpg",
+            "id": 1720774786942,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000104_SH_201.jpg",
+            "id": 1720774786974,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000105_SH_010.jpg",
+            "id": 1720774787020,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000106_SH_011.jpg",
+            "id": 1720774787052,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000107_GZ_001.jpg",
+            "id": 1720774787085,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000108_SZ_211.jpg",
+            "id": 1720774787115,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000109_SH_211.jpg",
+            "id": 1720774787146,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000110_SZ_010.jpg",
+            "id": 1720774787179,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000112_SH_230.jpg",
+            "id": 1720774787210,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000113_GZ_001.jpg",
+            "id": 1720774787243,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000114_SZ_000.jpg",
+            "id": 1720774787273,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000115_SH_012.jpg",
+            "id": 1720774787304,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000116_SZ_211.jpg",
+            "id": 1720774787337,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_000117_SZ_201.jpg",
+            "id": 1720774787369,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_003424_SH_201.jpg",
+            "id": 1720774787400,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_003441_SZ_000.jpg",
+            "id": 1720774787433,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_003455_SH_011.jpg",
+            "id": 1720774787464,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_003858_SH_010.jpg",
+            "id": 1720774787495,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_004034_GZ_001.jpg",
+            "id": 1720774787525,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_004584_SH_201.jpg",
+            "id": 1720774787570,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_004585_SH_011.jpg",
+            "id": 1720774787601,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_004604_SZ_000.jpg",
+            "id": 1720774787632,
+            "width": 1920,
+            "height": 1080
+        },
+        {
+            "file_name": "HT_VAL_004699_SH_211.jpg",
+            "id": 1720774787665,
+            "width": 1920,
+            "height": 1080
+        }
+    ]
+}
