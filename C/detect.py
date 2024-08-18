@@ -1,5 +1,4 @@
-from ultralytics import YOLO
-
+# -*- coding: utf-8 -*-
 import json
 import time
 import os
@@ -7,7 +6,7 @@ import cv2
 from ultralytics import YOLO
 
 # 加载 YOLOv8 模型
-model = YOLO("/home/aiservice/workspace/questionC/yoloTrain/runs/detect/train3/weights/last.pt")  # build from YAML and transfer weights
+model = YOLO("/home/aiservice/workspace/questionC/yoloTrain/runs/detect/train3/weights/best.pt")  # build from YAML and transfer weights
 
 
 # 读取图像
