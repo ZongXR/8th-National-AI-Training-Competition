@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from modelscope import AutoModelForCausalLM, AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
@@ -7,13 +8,14 @@ from transformers import pipeline
 import pandas as pd
 import json
 from config import DATA_SET
-cur_dir=os.path.dirname(os.path.realpath(__file__))
-import sys
 
-lora_path ="%s/saved_model/%s"%(cur_dir, DATA_SET)
+
+cur_dir = os.path.dirname(os.path.realpath(__file__))
+
+
+lora_path = "%s/saved_model/%s" % (cur_dir, DATA_SET)
 # 加载tokenizer
 tokenizer = AutoTokenizer.from_pretrained(lora_path)
-
 # 加载模型
 model = AutoModelForCausalLM.from_pretrained(lora_path, device_map="auto",torch_dtype=torch.bfloat16)
 
@@ -21,10 +23,10 @@ model = AutoModelForCausalLM.from_pretrained(lora_path, device_map="auto",torch_
 config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
-    inference_mode=False, # 训练模式
-    r=8, # Lora 秩
-    lora_alpha=32, # Lora alaph，具体作用参见 Lora 原理
-    lora_dropout=0.1# Dropout 比例
+    inference_mode=False,  # 训练模式
+    r=8,  # Lora 秩
+    lora_alpha=32,  # Lora alaph，具体作用参见 Lora 原理
+    lora_dropout=0.1  # Dropout 比例
 )
 
 

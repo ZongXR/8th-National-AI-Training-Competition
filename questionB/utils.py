@@ -1,5 +1,8 @@
-from config import MAX_LENGTH_Q, MAX_LENGTH_A, MAX_LENGTH_QA, MODEL
+# -*- coding: utf-8 -*-
+from modelscope import AutoModelForCausalLM, AutoTokenizer
+from config import MAX_LENGTH_Q, MAX_LENGTH_A, MAX_LENGTH_QA, MODEL, MODEL_PATH
 import torch
+
 
 ID_PAD = 0
 ID_BOS = 2
@@ -12,11 +15,10 @@ ID_BR = 108  # "\n"
 ID_USER = 1645
 ID_MODEL = 2516
 
-from modelscope import AutoModelForCausalLM, AutoTokenizer
 
 model_path = "Lucachen/gemma2b"
+tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, use_fast=False, trust_remote_code=True)
 
-tokenizer = AutoTokenizer.from_pretrained('/home/aiservice/workspace/data/questionBData/model/%s'%(model_path), use_fast=False, trust_remote_code=True)
 
 def generate_prompt(data_point, is_logger=False):
     """   指令微调:
@@ -56,10 +58,10 @@ def generate_prompt(data_point, is_logger=False):
         print(out)
     return out
 
+
 def data_collator(batch):
     # there's probably a way to do this with the tokenizer settings
-    len_max_batch = [len(batch[i].get("input_ids")) + len(batch[i].get("labels"))
-                    for i in range(len(batch))]
+    len_max_batch = [len(batch[i].get("input_ids")) + len(batch[i].get("labels")) for i in range(len(batch))]
     len_max_batch = min(MAX_LENGTH_QA, max(len_max_batch))
     batch_attention_mask = []
     batch_input_ids = []
@@ -67,7 +69,7 @@ def data_collator(batch):
     for ba in batch:
         x, y = ba.get("input_ids"), ba.get("labels")
         len_padding = len_max_batch - len(x) - len(y)
-        ### calculate loss of output and input
+        # ## calculate loss of output and input
         if tokenizer.padding_side and tokenizer.padding_side == "left":
             labels = [-100] * len_padding + x + y
             input_ids = [ID_PAD] * len_padding + x + y
@@ -91,6 +93,7 @@ def data_collator(batch):
                   }
     return input_dict
 
+
 def print_trainable_parameters(model):
     """
     Prints the number of trainable parameters in the model.
@@ -102,6 +105,7 @@ def print_trainable_parameters(model):
         if param.requires_grad:
             trainable_params += param.numel()
     return f"Trainable model parameters: {trainable_params}\nAll model parameters: {all_param}\nPercentage of trainable model parameters: {100 * trainable_params / all_param:.2f}%"
+
 
 def save_pretrained(lora_path):
     tokenizer.save_pretrained(lora_path)
