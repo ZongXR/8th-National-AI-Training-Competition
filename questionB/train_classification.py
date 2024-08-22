@@ -46,7 +46,7 @@ def train():
 
     # 加载数据集
     dataset = load_dataset("json", data_files=DATA_PATH)
-    if DATA_SET in ("QQP", ):
+    if DATA_SET in ("QQP", "MRPC", "RTE"):
         dataset = dataset.map(lambda x: tokenizer(x["sentence1"], x["sentence2"], truncation=True, padding=True), batched=True)
     else:
         dataset = dataset.map(lambda x: tokenizer(x["text"], truncation=True, padding=True), batched=True)
