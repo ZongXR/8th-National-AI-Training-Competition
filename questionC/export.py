@@ -8,5 +8,5 @@ from ultralytics import YOLO
 
 model = YOLO("/path/best.pt")  # build from YAML and transfer weights
 
-success = model.export(format="onnx")
+success = model.export(format="onnx", imgsz=640)
 

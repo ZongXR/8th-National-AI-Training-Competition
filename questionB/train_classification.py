@@ -60,9 +60,9 @@ def train():
         val_data = None
 
     config = LoraConfig(
-        lora_alpha=128,
+        lora_alpha=16,
         lora_dropout=0.05,
-        r=256,
+        r=8,
         bias="none",
         # 任务
         task_type=TaskType.SEQ_CLS,

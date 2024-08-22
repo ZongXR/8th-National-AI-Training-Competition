@@ -1,4 +1,4 @@
-DATA_SET = "CoLA"
+DATA_SET = "SST-2"
 DATA_PATH = "./pre_data/%s/%s_train.json" % (DATA_SET, DATA_SET)
 VAL_SET_SIZE = 1600
 MODEL = "gemma"
