@@ -21,7 +21,7 @@ def val(label_file):
     for i, test_da in enumerate(test_data["train"]):
         if i % 1 == 0:
             print(f"当前第{i}例 ---> 进度{i * 100 / total:.2f}%")
-        if DATA_SET in ("QQP",):
+        if DATA_SET in ("QQP", "MRPC", "RTE"):
             encoded_input = tokenizer(test_da["sentence1"], test_da["sentence2"], return_tensors='pt').to("cuda:0")
         else:
             encoded_input = tokenizer(test_da["text"], return_tensors='pt').to("cuda:0")

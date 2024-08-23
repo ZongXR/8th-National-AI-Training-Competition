@@ -208,7 +208,7 @@ def process_mrpc(balance: bool = False):
         train_df_pos = train_df[train_df["label"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
     train_df = train_df[["sentence1", "sentence2", "label"]].sample(4076, random_state=42)
-    dev_df = dev_df[["sentence1", "sentence2"]].head(150)
+    dev_df = dev_df[["sentence1", "sentence2"]].head(1725)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
     with open('%s/MRPC/MRPC_train.json' % pre_data_path, "w", encoding='utf-8') as f:
@@ -271,7 +271,7 @@ def process_rte(balance: bool = False):
         train_df_pos = train_df[train_df["label"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
     train_df = train_df[["sentence1", "sentence2", "label"]].sample(2490, random_state=42)
-    dev_df = dev_df[["sentence1", "sentence2"]].head(150)
+    dev_df = dev_df[["sentence1", "sentence2"]].head(277)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
     with open('%s/RTE/RTE_train.json' % pre_data_path, "w", encoding='utf-8') as f:
