@@ -4,6 +4,7 @@ from peft import LoraConfig, TaskType, get_peft_model
 from datasets import load_dataset
 import torch
 from transformers import Trainer, AutoTokenizer, BitsAndBytesConfig, TrainingArguments, GemmaForSequenceClassification
+from transformers.trainer_utils import EvalPrediction
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from config import DATA_PATH, VAL_SET_SIZE, DATA_SET, MODEL, MODEL_PATH
 
@@ -11,7 +12,7 @@ from config import DATA_PATH, VAL_SET_SIZE, DATA_SET, MODEL, MODEL_PATH
 cur_dir = os.path.dirname(os.path.realpath(__file__))
 
 
-def compute_metrics(pred):
+def compute_metrics(pred: EvalPrediction):
     labels = pred.label_ids
     preds = pred.predictions.argmax(-1)
     precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average='macro')
@@ -31,7 +32,6 @@ def train():
         bnb_4bit_quant_type="nf4",
         bnb_4bit_compute_dtype=torch.bfloat16
     )
-
     # 加载模型
     model = GemmaForSequenceClassification.from_pretrained(
         MODEL_PATH,
@@ -41,25 +41,7 @@ def train():
         num_labels=2
     )
 
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-    tokenizer.padding_side = 'right'
-
-    # 加载数据集
-    dataset = load_dataset("json", data_files=DATA_PATH)
-    if DATA_SET in ("QQP", "MRPC", "RTE"):
-        dataset = dataset.map(lambda x: tokenizer(x["sentence1"], x["sentence2"], truncation=True, padding=True), batched=True)
-    else:
-        dataset = dataset.map(lambda x: tokenizer(x["text"], truncation=True, padding=True), batched=True)
-
-    if VAL_SET_SIZE > 0:
-        train_val = dataset["train"].train_test_split(test_size=VAL_SET_SIZE, shuffle=True, seed=42)
-        train_data = train_val["train"].shuffle(seed=42)
-        val_data = train_val["test"].shuffle(seed=42)
-    else:
-        train_data = dataset["train"].shuffle(seed=42)
-        val_data = None
-
-    config = LoraConfig(
+    lora_config = LoraConfig(
         lora_alpha=16,
         lora_dropout=0.05,
         r=8,
@@ -67,7 +49,26 @@ def train():
         # 任务
         task_type=TaskType.SEQ_CLS,
     )
-    model = get_peft_model(model, config)
+    model = get_peft_model(model, lora_config)
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+    tokenizer.padding_side = 'right'
+
+    # 加载数据集
+    dataset = load_dataset("json", data_files=DATA_PATH, split="train")
+    if DATA_SET in ("QQP", "MRPC", "RTE"):
+        dataset = dataset.map(lambda x: tokenizer(x["sentence1"], x["sentence2"], truncation=True, padding=True), batched=True)
+    else:
+        dataset = dataset.map(lambda x: tokenizer(x["sentence"], truncation=True, padding=True), batched=True)
+
+    if VAL_SET_SIZE > 0:
+        train_val = dataset.train_test_split(test_size=VAL_SET_SIZE, shuffle=True, seed=42)
+        train_data = train_val["train"]
+        val_data = train_val["test"]
+    else:
+        train_data = dataset.shuffle(seed=42)
+        val_data = None
+
     args = TrainingArguments(
         output_dir="%s/output/%s/%s" % (cur_dir, MODEL, DATA_SET),  # directory to save and repository id
         do_train=True,
@@ -87,7 +88,11 @@ def train():
         save_strategy="epoch",  # save checkpoint every epoch
         evaluation_strategy="epoch",
         load_best_model_at_end=True,
-        metric_for_best_model='eval_loss'
+        metric_for_best_model='eval_loss',
+        seed=42,
+        data_seed=42,
+        dataloader_num_workers=10,
+        dataloader_persistent_workers=True
     )
 
     # max sequence length for model and packing of the dataset

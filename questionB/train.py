@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-import pandas as pd
 import os
-import numpy as np
-from modelscope import AutoModelForCausalLM, AutoTokenizer
-from transformers import Trainer,TrainingArguments, DataCollatorForSeq2Seq, BitsAndBytesConfig
+from modelscope import AutoModelForCausalLM
+from transformers import Trainer,TrainingArguments, BitsAndBytesConfig
 import torch
 from datasets import load_dataset
 from peft import LoraConfig, TaskType, prepare_model_for_kbit_training, get_peft_model

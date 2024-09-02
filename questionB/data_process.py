@@ -14,14 +14,14 @@ def process_qqp(balance: bool = False):
     dev_df = dev_df.dropna(subset=["question2"])
     train_df["sentence1"] = train_df["question1"]
     train_df["sentence2"] = train_df["question2"]
-    train_df["label"] = train_df["is_duplicate"].astype(int)
+    train_df["labels"] = train_df["is_duplicate"].astype(int)
     dev_df["sentence1"] = dev_df["question1"]
     dev_df["sentence2"] = dev_df["question2"]
     if balance:
-        train_df_pos = train_df[train_df["label"] == 1]
-        train_df_neg = train_df[train_df["label"] == 0].head(train_df_pos.shape[0])
+        train_df_pos = train_df[train_df["labels"] == 1]
+        train_df_neg = train_df[train_df["labels"] == 0].head(train_df_pos.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence1", "sentence2", "label"]].sample(4000, random_state=42)
+    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(4000, random_state=42)
     dev_df = dev_df[["sentence1", "sentence2"]].head(150)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
@@ -78,15 +78,15 @@ def process_cola(balance: bool = False):
     dev_df = pd.read_csv('%s/CoLA/CoLA_dev.tsv' % DATA_PATH, sep='\t', on_bad_lines="skip", header=None)
     train_df = train_df.dropna(subset=[3])
     dev_df = dev_df.dropna(subset=[2])
-    train_df["text"] = train_df[3]
+    train_df["sentence"] = train_df[3]
     train_df["labels"] = train_df[1].astype(int)
-    dev_df["text"] = dev_df[2]
+    dev_df["sentence"] = dev_df[2]
     if balance:
         train_df_neg = train_df[train_df["labels"] == 0]
         train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["text", "labels"]].sample(4000, random_state=42)
-    dev_df = dev_df[["text"]].head(150)
+    train_df = train_df[["sentence", "labels"]].sample(4000, random_state=42)
+    dev_df = dev_df[["sentence"]].head(150)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
     with open('%s/CoLA/CoLA_train.json' % pre_data_path, "w", encoding='utf-8') as f:
@@ -140,15 +140,13 @@ def cola_process():
 def process_sst(balance: bool = False):
     train_df = pd.read_csv('%s/SST-2/SST-2_train.tsv' % DATA_PATH, sep='\t', on_bad_lines="skip", header=0)
     dev_df = pd.read_csv('%s/SST-2/SST-2_dev.tsv' % DATA_PATH, sep='\t', on_bad_lines="skip", header=0)
-    train_df["text"] = train_df["sentence"]
     train_df["labels"] = train_df["label"].astype(int)
-    dev_df["text"] = dev_df["sentence"]
     if balance:
         train_df_neg = train_df[train_df["labels"] == 0]
         train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["text", "labels"]].sample(4000, random_state=42)
-    dev_df = dev_df[["text"]].head(150)
+    train_df = train_df[["sentence", "labels"]].sample(4000, random_state=42)
+    dev_df = dev_df[["sentence"]].head(150)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
     with open('%s/SST-2/SST-2_train.json' % pre_data_path, "w", encoding='utf-8') as f:
@@ -200,14 +198,14 @@ def process_mrpc(balance: bool = False):
     dev_df = pd.read_csv('%s/MRPC/MRPC_dev.tsv' % DATA_PATH, sep='\t', on_bad_lines="skip", header=0)
     train_df["sentence1"] = train_df["#1 String"]
     train_df["sentence2"] = train_df["#2 String"]
-    train_df["label"] = train_df["Quality"].astype(int)
+    train_df["labels"] = train_df["Quality"].astype(int)
     dev_df["sentence1"] = dev_df["#1 String"]
     dev_df["sentence2"] = train_df["#2 String"]
     if balance:
-        train_df_neg = train_df[train_df["label"] == 0]
-        train_df_pos = train_df[train_df["label"] == 1].head(train_df_neg.shape[0])
+        train_df_neg = train_df[train_df["labels"] == 0]
+        train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence1", "sentence2", "label"]].sample(4076, random_state=42)
+    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(4076, random_state=42)
     dev_df = dev_df[["sentence1", "sentence2"]].head(1725)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
@@ -258,19 +256,19 @@ def mrpc_process():
 def process_rte(balance: bool = False):
     train_df = pd.read_csv('%s/RTE/RTE_train.tsv' % DATA_PATH, sep='\t', on_bad_lines="skip", header=0)
     dev_df = pd.read_csv('%s/RTE/RTE_dev.tsv' % DATA_PATH, sep='\t', on_bad_lines="skip", header=0)
-    train_df["label"] = train_df["label"].map({
+    train_df["labels"] = train_df["label"].map({
         "entailment": 1,
         "not_entailment": 0
     })
-    dev_df["label"] = dev_df["label"].map({
+    dev_df["labels"] = dev_df["label"].map({
         "entailment": 1,
         "not_entailment": 0
     })
     if balance:
-        train_df_neg = train_df[train_df["label"] == 0]
-        train_df_pos = train_df[train_df["label"] == 1].head(train_df_neg.shape[0])
+        train_df_neg = train_df[train_df["labels"] == 0]
+        train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence1", "sentence2", "label"]].sample(2490, random_state=42)
+    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(2490, random_state=42)
     dev_df = dev_df[["sentence1", "sentence2"]].head(277)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")

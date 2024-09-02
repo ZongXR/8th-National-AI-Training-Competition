@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from modelscope import AutoModelForCausalLM, AutoTokenizer
+from modelscope import AutoTokenizer
 from config import MAX_LENGTH_Q, MAX_LENGTH_A, MAX_LENGTH_QA, MODEL, MODEL_PATH
 import torch
 
