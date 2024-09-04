@@ -21,7 +21,7 @@ def process_qqp(balance: bool = False):
         train_df_pos = train_df[train_df["labels"] == 1]
         train_df_neg = train_df[train_df["labels"] == 0].head(train_df_pos.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(4000, random_state=42)
+    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(min(4000, train_df.shape[0]), random_state=42)
     dev_df = dev_df[["sentence1", "sentence2"]].head(150)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
@@ -85,7 +85,7 @@ def process_cola(balance: bool = False):
         train_df_neg = train_df[train_df["labels"] == 0]
         train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence", "labels"]].sample(4000, random_state=42)
+    train_df = train_df[["sentence", "labels"]].sample(min(4000, train_df.shape[0]), random_state=42)
     dev_df = dev_df[["sentence"]].head(150)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
@@ -145,7 +145,7 @@ def process_sst(balance: bool = False):
         train_df_neg = train_df[train_df["labels"] == 0]
         train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence", "labels"]].sample(4000, random_state=42)
+    train_df = train_df[["sentence", "labels"]].sample(min(4000, train_df.shape[0]), random_state=42)
     dev_df = dev_df[["sentence"]].head(150)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
@@ -205,7 +205,7 @@ def process_mrpc(balance: bool = False):
         train_df_neg = train_df[train_df["labels"] == 0]
         train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(4076, random_state=42)
+    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(min(4076, train_df.shape[0]), random_state=42)
     dev_df = dev_df[["sentence1", "sentence2"]].head(1725)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
@@ -268,7 +268,7 @@ def process_rte(balance: bool = False):
         train_df_neg = train_df[train_df["labels"] == 0]
         train_df_pos = train_df[train_df["labels"] == 1].head(train_df_neg.shape[0])
         train_df = pd.concat([train_df_pos, train_df_neg]).sample(frac=1, random_state=42)
-    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(2490, random_state=42)
+    train_df = train_df[["sentence1", "sentence2", "labels"]].sample(min(2490, train_df.shape[0]), random_state=42)
     dev_df = dev_df[["sentence1", "sentence2"]].head(277)
     train_json = train_df.to_json(orient="records")
     dev_json = dev_df.to_json(orient="records")
