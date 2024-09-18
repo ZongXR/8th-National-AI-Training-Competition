@@ -48,60 +48,60 @@ result.txt 的标准答案文件是data/questionAAnswer/result.txt
 
 仅能使用以下依赖库，且考试环境无法安装其他依赖库（离线环境）
 
-numpy==1.24.4
-scikit-learn==1.3.0
-matplotlib==3.7.5
-transformers==4.38.1
-datasets==2.18.0
-accelerate==0.26.1
-evaluate==0.4.1
-bitsandbytes==0.42.0
-certifi==2024.6.2
-charset-normalizer==3.3.2
-colorama==0.4.6
-contourpy==1.1.1
-cycler==0.12.1
-filelock==3.15.4
-fonttools==4.53.0
-idna==3.7
-importlib_resources==6.4.0
-Jinja2==3.1.4
-kiwisolver==1.4.5
-MarkupSafe==2.1.5
-mpmath==1.3.0
-networkx==3.1
-onnx==1.16.1
-opencv-python==4.10.0.84
-packaging==23.1
-pandas==2.0.3
-pillow==9.5.0
-protobuf==3.20.3
-psutil==6.0.0
-py-cpuinfo==9.0.0
-pyparsing==3.1.2
-python-dateutil==2.9.0.post0
-pytz==2024.1
-PyYAML==6.0.1
-requests==2.32.3
-scipy==1.10.1
-seaborn==0.13.2
-setuptools==70.1.1
-six==1.16.0
-sympy==1.12.1
-torch==2.0.0
-torchaudio==2.0.1
-torchvision==0.15.1
-tqdm==4.66.4
-typing_extensions==4.12.2
-tzdata==2024.1
-ultralytics==8.2.45
-ultralytics-thop==2.0.0
-urllib3==2.2.2
-wheel==0.43.0
-zipp==3.19.2
-modelscope==1.15.0
-pycocotools==2.0.8
-peft==0.10.0
-sentencepiece==0.1.99
-streamlit==1.24.0
+    numpy==1.24.4
+    scikit-learn==1.3.0
+    matplotlib==3.7.5
+    transformers==4.38.1
+    datasets==2.18.0
+    accelerate==0.26.1
+    evaluate==0.4.1
+    bitsandbytes==0.42.0
+    certifi==2024.6.2
+    charset-normalizer==3.3.2
+    colorama==0.4.6
+    contourpy==1.1.1
+    cycler==0.12.1
+    filelock==3.15.4
+    fonttools==4.53.0
+    idna==3.7
+    importlib_resources==6.4.0
+    Jinja2==3.1.4
+    kiwisolver==1.4.5
+    MarkupSafe==2.1.5
+    mpmath==1.3.0
+    networkx==3.1
+    onnx==1.16.1
+    opencv-python==4.10.0.84
+    packaging==23.1
+    pandas==2.0.3
+    pillow==9.5.0
+    protobuf==3.20.3
+    psutil==6.0.0
+    py-cpuinfo==9.0.0
+    pyparsing==3.1.2
+    python-dateutil==2.9.0.post0
+    pytz==2024.1
+    PyYAML==6.0.1
+    requests==2.32.3
+    scipy==1.10.1
+    seaborn==0.13.2
+    setuptools==70.1.1
+    six==1.16.0
+    sympy==1.12.1
+    torch==2.0.0
+    torchaudio==2.0.1
+    torchvision==0.15.1
+    tqdm==4.66.4
+    typing_extensions==4.12.2
+    tzdata==2024.1
+    ultralytics==8.2.45
+    ultralytics-thop==2.0.0
+    urllib3==2.2.2
+    wheel==0.43.0
+    zipp==3.19.2
+    modelscope==1.15.0
+    pycocotools==2.0.8
+    peft==0.10.0
+    sentencepiece==0.1.99
+    streamlit==1.24.0
 
